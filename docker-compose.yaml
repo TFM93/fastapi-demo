@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:11
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: pguser
+      POSTGRES_DB: service
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: appimage:dev
+    ports:
+      - "127.0.0.1:8001:80"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://pguser:password@postgres:5432/service
+    restart: always
+    depends_on:
+      - postgres
+volumes:
+  pgdata:

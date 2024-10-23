@@ -1,0 +1,26 @@
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 select pg_catalog.version()
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 [raw sql] ()
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 select current_schema()
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 [raw sql] ()
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 show standard_conforming_strings
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 [raw sql] ()
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:2701 BEGIN (implicit)
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 SELECT users.id, users.email, users.tenant, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = $1::VARCHAR
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 [generated in 0.00009s] ('G3L635P7F2@email.com',)
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 INSERT INTO users (email, tenant, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::TIMESTAMP WITH TIME ZONE) RETURNING users.id, users.created_at
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 [generated in 0.00009s] ('G3L635P7F2@email.com', '123', None)
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:2707 COMMIT
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:2701 BEGIN (implicit)
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 SELECT users.id, users.email, users.tenant, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = $1::INTEGER
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 [generated in 0.00008s] (29,)
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:2704 ROLLBACK
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:2701 BEGIN (implicit)
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 SELECT users.id, users.email, users.tenant, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = $1::VARCHAR
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:1846 [cached since 0.01632s ago] ('G3L635P7F2@email.com',)
+[32mINFO    [0m sqlalchemy.engine.Engine:base.py:2704 ROLLBACK
